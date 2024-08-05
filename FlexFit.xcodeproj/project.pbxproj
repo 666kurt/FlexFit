@@ -18,12 +18,14 @@
 		FCCDC94A2C60CAA6004A153F /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9492C60CAA6004A153F /* SettingsScreen.swift */; };
 		FCCDC94C2C60CBB7004A153F /* Color+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC94B2C60CBB7004A153F /* Color+extensions.swift */; };
 		FCCDC94E2C60D255004A153F /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC94D2C60D255004A153F /* CalendarView.swift */; };
-		FCCDC9502C60E2B4004A153F /* CreateButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC94F2C60E2B4004A153F /* CreateButtonView.swift */; };
 		FCCDC9522C60E682004A153F /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9512C60E682004A153F /* NavigationTitleView.swift */; };
 		FCCDC9542C60FBDC004A153F /* NewNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9532C60FBDC004A153F /* NewNoteView.swift */; };
 		FCCDC9562C610552004A153F /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9552C610552004A153F /* TextFieldView.swift */; };
 		FCCDC9582C610E97004A153F /* NoteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9572C610E97004A153F /* NoteRowView.swift */; };
-		FCCDC95A2C611BC0004A153F /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9592C611BC0004A153F /* CalendarViewModel.swift */; };
+		FCCDC95A2C611BC0004A153F /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9592C611BC0004A153F /* NoteViewModel.swift */; };
+		FCCDC96B2C6176C4004A153F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC96A2C6176C4004A153F /* AlertView.swift */; };
+		FCCDC96D2C6177C9004A153F /* NewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC96C2C6177C9004A153F /* NewButtonView.swift */; };
+		FCCDC96F2C6180C8004A153F /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC96E2C6180C8004A153F /* EmptyListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,12 +41,14 @@
 		FCCDC9492C60CAA6004A153F /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		FCCDC94B2C60CBB7004A153F /* Color+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extensions.swift"; sourceTree = "<group>"; };
 		FCCDC94D2C60D255004A153F /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		FCCDC94F2C60E2B4004A153F /* CreateButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateButtonView.swift; sourceTree = "<group>"; };
 		FCCDC9512C60E682004A153F /* NavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
 		FCCDC9532C60FBDC004A153F /* NewNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteView.swift; sourceTree = "<group>"; };
 		FCCDC9552C610552004A153F /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		FCCDC9572C610E97004A153F /* NoteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRowView.swift; sourceTree = "<group>"; };
-		FCCDC9592C611BC0004A153F /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		FCCDC9592C611BC0004A153F /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
+		FCCDC96A2C6176C4004A153F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		FCCDC96C2C6177C9004A153F /* NewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewButtonView.swift; sourceTree = "<group>"; };
+		FCCDC96E2C6180C8004A153F /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,9 +148,11 @@
 		FCCDC93B2C60C708004A153F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				FCCDC94F2C60E2B4004A153F /* CreateButtonView.swift */,
 				FCCDC9512C60E682004A153F /* NavigationTitleView.swift */,
 				FCCDC9552C610552004A153F /* TextFieldView.swift */,
+				FCCDC96A2C6176C4004A153F /* AlertView.swift */,
+				FCCDC96C2C6177C9004A153F /* NewButtonView.swift */,
+				FCCDC96E2C6180C8004A153F /* EmptyListView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -174,7 +180,7 @@
 		FCCDC9422C60CA2E004A153F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				FCCDC9592C611BC0004A153F /* CalendarViewModel.swift */,
+				FCCDC9592C611BC0004A153F /* NoteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -293,14 +299,16 @@
 				FCCDC9402C60CA15004A153F /* CalendarScreen.swift in Sources */,
 				FCCDC94C2C60CBB7004A153F /* Color+extensions.swift in Sources */,
 				FCCDC9262C60C58F004A153F /* MainView.swift in Sources */,
-				FCCDC9502C60E2B4004A153F /* CreateButtonView.swift in Sources */,
+				FCCDC96D2C6177C9004A153F /* NewButtonView.swift in Sources */,
 				FCCDC93D2C60C947004A153F /* Router.swift in Sources */,
-				FCCDC95A2C611BC0004A153F /* CalendarViewModel.swift in Sources */,
+				FCCDC96F2C6180C8004A153F /* EmptyListView.swift in Sources */,
+				FCCDC95A2C611BC0004A153F /* NoteViewModel.swift in Sources */,
 				FCCDC9562C610552004A153F /* TextFieldView.swift in Sources */,
 				FCCDC9302C60C591004A153F /* FlexFit.xcdatamodeld in Sources */,
 				FCCDC9522C60E682004A153F /* NavigationTitleView.swift in Sources */,
 				FCCDC9542C60FBDC004A153F /* NewNoteView.swift in Sources */,
 				FCCDC9582C610E97004A153F /* NoteRowView.swift in Sources */,
+				FCCDC96B2C6176C4004A153F /* AlertView.swift in Sources */,
 				FCCDC9242C60C58F004A153F /* FlexFitApp.swift in Sources */,
 				FCCDC9452C60CA4F004A153F /* TrainingScreen.swift in Sources */,
 			);

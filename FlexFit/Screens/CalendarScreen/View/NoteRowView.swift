@@ -46,9 +46,7 @@ struct NoteRowView: View {
 }
 
 #Preview {
-//    NoteRowView(noteLabel: "Buy cocktail products", 
-//                noteTime: Date())
-//    .background(Color.theme.background.main)
+
     
     CalendarScreen()
 }

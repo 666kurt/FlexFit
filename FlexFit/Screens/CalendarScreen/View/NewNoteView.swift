@@ -3,27 +3,20 @@ import SwiftUI
 struct NewNoteView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    
-    @State var noteLabel: String = ""
-    @State var selectedDate: Date = Date()
-    @State var selectedTime: Date = Date()
+    @State private var noteLabel: String = ""
+    @State private var selectedDate: Date = Date()
     
     var body: some View {
-        
         NavigationView {
             VStack(spacing: 15) {
                 dateAndTimeView
                 
                 TextFieldView(placeholder: "Enter note",
                               queryText: $noteLabel)
-            
             }
             .padding(20)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-            .background(
-                Color.theme.background.main
-                    .ignoresSafeArea()
-            )
+            .background(Color.theme.background.main.ignoresSafeArea())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -44,6 +37,7 @@ struct NewNoteView: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
+                        //
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text("Save")
@@ -52,7 +46,6 @@ struct NewNoteView: View {
                     .disabled(!saveButtonIsValid)
                 }
             }
-            
         }
     }
     
@@ -78,7 +71,7 @@ extension NewNoteView {
             HStack {
                 Text("Time")
                 DatePicker("",
-                           selection: $selectedTime,
+                           selection: $selectedDate,
                            displayedComponents: .hourAndMinute)
             }
         }
