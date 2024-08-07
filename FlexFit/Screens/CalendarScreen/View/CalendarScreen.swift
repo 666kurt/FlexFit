@@ -1,94 +1,82 @@
 import SwiftUI
 
 struct CalendarScreen: View {
-    
-    @StateObject private var viewModel = NoteViewModel()
-    
-    @State var selectedDate: Date = Date()
-    @State var showNewNote: Bool = false
-    @State var showAlert: Bool = false
+    @EnvironmentObject private var viewModel: NoteViewModel
+    @State private var showNewNote: Bool = false
+    @State private var showAlert: Bool = false
     @State private var indexSetToDelete: IndexSet?
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                VStack(spacing: 0) {
-                    
-                    NavigationTitleView(title: "My Calendar")
-                    
-                    WeekCalendarView(currentDate: $selectedDate)
-                    
-                    // ЕСЛИ ЗАМЕТОК НЕТ
+        ZStack {
+            VStack(spacing: 20) {
+                
+                NavigationTitleView(title: "My Calendar")
+                    .padding(.leading, 20)
+                
+                WeekCalendarView(selectedDate: $viewModel.selectedDate)
+                    .onChange(of: viewModel.selectedDate) { _ in
+                        viewModel.fetchNotes(for: viewModel.selectedDate)
+                    }
+                
+                if viewModel.notesForSelectedDate.isEmpty {
                     EmptyListView(emodji: "📆",
                                   title: "Add your first note",
                                   isPresented: $showNewNote)
-                    
-                    // ЕСЛИ ЗАМЕТКИ ЕСТЬ
-//                    listNotesView
-                    
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(
-                    Color.theme.background.main
-                        .ignoresSafeArea()
-                )
-                .fullScreenCover(isPresented: $showNewNote) {
-                    NewNoteView()
-                }
-                
-                if showAlert {
-                    alertOverlay
+                } else {
+                    listNotesView
                 }
             }
+            .background(Color.theme.background.main.ignoresSafeArea())
+            .fullScreenCover(isPresented: $showNewNote) {
+                NewNoteView()
+                    .environmentObject(viewModel)
+            }
+            .onAppear {
+                viewModel.fetchNotes(for: viewModel.selectedDate)
+            }
             
+            if showAlert {
+                AlertView(showAlert: $showAlert,
+                          title: "Delete",
+                          description: "Are you sure you want to delete?",
+                          onDelete: {
+                    if let indexSet = indexSetToDelete {
+                        viewModel.deleteNotes(at: indexSet)
+                        indexSetToDelete = nil
+                    }
+                })
+                .transition(.opacity)
+                .animation(.easeInOut)
+            }
         }
     }
+    
 }
 
 extension CalendarScreen {
-    
     private var listNotesView: some View {
         ZStack(alignment: .bottom) {
             List {
-                ForEach(1...5, id: \.self) { _ in
-                    NoteRowView(noteLabel: "Test",
-                                noteTime: Date())
+                ForEach(viewModel.notesForSelectedDate, id: \.id) { note in
+                    NoteRowView(note: note)
+                        .environmentObject(viewModel)
                 }
-                .onDelete(perform: showDeleteAlert)
+                .onDelete { indexSet in
+                    showAlert = true
+                    indexSetToDelete = indexSet
+                }
                 .listRowBackground(Color.theme.background.main)
                 .listRowInsets(EdgeInsets())
-                
             }
             .listStyle(.plain)
             
-            NewButtonView(buttonLabel: "New note", isPresented: $showNewNote)
+            NewButtonView(buttonLabel: "New note",
+                          isPresented: $showNewNote)
         }
     }
-    
-    private var alertOverlay: some View {
-        ZStack {
-            Color.black.opacity(0.5)
-                .edgesIgnoringSafeArea(.all)
-            AlertView(showAlert: $showAlert,
-                      title: "Delete",
-                      description: "Are you sure you want to delete?",
-                      onReset: {
-                if let indexSet = indexSetToDelete {
-                    print(indexSet)
-                }
-            })
-            .transition(.opacity)
-            .animation(.easeInOut)
-        }
-    }
-    
-    private func showDeleteAlert(at indexSet: IndexSet) {
-        indexSetToDelete = indexSet
-        showAlert = true
-    }
-    
 }
 
 #Preview {
     CalendarScreen()
+        .environmentObject(NoteViewModel())
 }

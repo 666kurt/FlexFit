@@ -1,31 +1,62 @@
 import SwiftUI
 
 struct TrainingScreen: View {
+    @EnvironmentObject private var trainingViewModel: TrainingViewModel
     
-    @State var showNewTraining: Bool = false
+    @State private var showNewTraining = false
+    @State private var showEditPlan = false
+    
+    @State private var selectedTraining: Training?
     
     var body: some View {
-        VStack(spacing: 30) {
+        VStack(spacing: 20) {
             NavigationTitleView(title: "Training")
             
             trainingPlanView
             
-            EmptyListView(emodji: "🏋🏻",
-                          title: "Add your first training",
-                          isPresented: $showNewTraining)
-            
+            if trainingViewModel.trainings.isEmpty {
+                EmptyListView(
+                    emodji: "🏋🏻",
+                    title: "Add your first training",
+                    isPresented: $showNewTraining
+                )
+            } else {
+                listTrainingView
+            }
         }
         .padding(.horizontal, 20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            Color.theme.background.main
-                .ignoresSafeArea()
-        )
+        .background(Color.theme.background.main.ignoresSafeArea())
+        
+        // Создание тренировки
+        .fullScreenCover(isPresented: $showNewTraining) {
+            NewTrainingView()
+                .environmentObject(trainingViewModel)
+        }
+        
+        // Детальный экран тренировки
+        .fullScreenCover(item: $selectedTraining) { training in
+            TrainingDetailView(training: training)
+                .environmentObject(trainingViewModel)
+        }
+        
+        // Редактирование плана тренировки
+        .sheet(isPresented: $showEditPlan) {
+            EditPlanView(
+                trainingDays: $trainingViewModel.trainingDays,
+                trainingHours: $trainingViewModel.trainingHours
+            ) {
+                trainingViewModel.saveTrainingPlan()
+            }
+        }
+        .onAppear {
+            trainingViewModel.fetchTrainingPlan()
+            trainingViewModel.fetchTrainings()
+        }
     }
 }
 
 extension TrainingScreen {
-    
     private var trainingPlanView: some View {
         VStack(spacing: 10) {
             HStack {
@@ -36,7 +67,7 @@ extension TrainingScreen {
                 Spacer()
                 
                 Button {
-                    //
+                    showEditPlan.toggle()
                 } label: {
                     HStack {
                         Image(systemName: "pencil")
@@ -49,18 +80,20 @@ extension TrainingScreen {
             
             HStack {
                 VStack(spacing: 4) {
-                    Text("0")
+                    Text(trainingViewModel.trainingDays)
                         .font(.title).bold()
+                        .lineLimit(1)
                         .foregroundColor(Color.theme.other.primary)
                     Text("Quantity training days")
                         .font(.caption2)
+                        .lineLimit(1)
                         .foregroundColor(Color.theme.text.notActive)
                 }
                 
                 Spacer()
                 
                 VStack(spacing: 4) {
-                    Text("0")
+                    Text(trainingViewModel.trainingHours)
                         .font(.title).bold()
                         .foregroundColor(Color.theme.other.primary)
                     Text("Number of training hours")
@@ -68,7 +101,6 @@ extension TrainingScreen {
                         .foregroundColor(Color.theme.text.notActive)
                 }
             }
-            
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 10)
@@ -77,8 +109,26 @@ extension TrainingScreen {
         .clipShape(RoundedRectangle(cornerRadius: 5))
     }
     
+    private var listTrainingView: some View {
+        ZStack(alignment: .bottom) {
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVStack(spacing: 15) {
+                    ForEach(trainingViewModel.trainings) { training in
+                        TrainingRowView(trainingName: training.title,
+                                        trainingDate: training.date ?? Date(), action: {
+                            selectedTraining = training
+                        })
+                    }
+                }
+            }
+            
+            NewButtonView(buttonLabel: "New training", isPresented: $showNewTraining)
+        }
+    }
 }
 
 #Preview {
     TrainingScreen()
+        .environmentObject(TrainingViewModel())
 }
+

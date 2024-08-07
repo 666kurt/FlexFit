@@ -5,9 +5,13 @@ struct AlertView: View {
     @Binding var showAlert: Bool
     let title: String
     let description: String
-    let onReset: () -> Void
+    let onDelete: () -> Void
     
     var body: some View {
+        ZStack {
+            
+            Color.black.opacity(0.5).edgesIgnoringSafeArea(.all)
+            
             VStack(spacing: 0) {
                 Text(title)
                     .font(.headline)
@@ -37,7 +41,7 @@ struct AlertView: View {
                         .background(Color(hex: "#8C8C8C"))
                     
                     Button {
-                        onReset()
+                        onDelete()
                         showAlert = false
                     } label: {
                         Text("Delete")
@@ -55,13 +59,13 @@ struct AlertView: View {
                 Color(hex: "#252525")
             )
             .clipShape(RoundedRectangle(cornerRadius: 14))
+        }
     }
 }
 
 #Preview {
     AlertView(showAlert: .constant(true),
-                    title: "Reset data",
-                    description: "Do you really want to reset the data? It'll cause you to lose progress.") {
-        //
-    }
+              title: "Reset data",
+              description: "Do you really want to reset the data? It'll cause you to lose progress.",
+              onDelete: {})
 }

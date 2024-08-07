@@ -1,35 +1,34 @@
 import SwiftUI
 
 struct WeekCalendarView: View {
-    @Binding var currentDate: Date
+    @Binding var selectedDate: Date
     
     var body: some View {
         HStack {
             ForEach(0..<7, id: \.self) { index in
                 let calendar = Calendar.current
-                let startOfWeek = self.startOfWeek(self.currentDate)
+                let startOfWeek = self.startOfWeek(self.selectedDate)
                 let date = calendar.date(byAdding: .day, value: index, to: startOfWeek)!
                 
-                VStack {
+                VStack(spacing: 0) {
                     Text(self.dayOfWeekShortName(for: date))
                         .foregroundColor(.gray)
-                        .padding(.bottom, 3)
                     
                     Text("\(calendar.component(.day, from: date))")
-                        .foregroundColor(calendar.isDate(self.currentDate, inSameDayAs: date) ? .white : .white)
-                        .padding(10)
-                        .background(calendar.isDate(self.currentDate, inSameDayAs: date) ? Color.blue : Color.clear)
+                        .foregroundColor(calendar.isDate(self.selectedDate, inSameDayAs: date) ? .white : .white)
+                        .padding(12)
+                        .background(calendar.isDate(self.selectedDate, inSameDayAs: date) ? Color.blue : Color.clear)
                         .clipShape(Circle())
                 }
                 .frame(maxWidth: .infinity)
                 .onTapGesture {
-                    self.currentDate = date
+                    self.selectedDate = date
                 }
             }
         }
-        .padding(.vertical, 18)
+        .padding(.horizontal, 10)
         .onAppear {
-            self.currentDate = Date()
+            self.selectedDate = Date()
         }
     }
     
@@ -50,5 +49,5 @@ struct WeekCalendarView: View {
 }
 
 #Preview {
-    WeekCalendarView(currentDate: .constant(Date()))
+    WeekCalendarView(selectedDate: .constant(Date()))
 }

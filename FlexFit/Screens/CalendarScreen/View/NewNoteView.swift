@@ -1,18 +1,15 @@
 import SwiftUI
 
 struct NewNoteView: View {
-    
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var viewModel: NoteViewModel
     @State private var noteLabel: String = ""
-    @State private var selectedDate: Date = Date()
     
     var body: some View {
         NavigationView {
             VStack(spacing: 15) {
                 dateAndTimeView
-                
-                TextFieldView(placeholder: "Enter note",
-                              queryText: $noteLabel)
+                TextFieldView(placeholder: "Enter note", queryText: $noteLabel)
             }
             .padding(20)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -20,9 +17,7 @@ struct NewNoteView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
+                    Button(action: { presentationMode.wrappedValue.dismiss() }) {
                         HStack {
                             Image(systemName: "chevron.left")
                             Text("Back")
@@ -30,31 +25,25 @@ struct NewNoteView: View {
                     }
                 }
                 ToolbarItem(placement: .principal) {
-                    Text("New note")
-                        .foregroundColor(.white)
-                        .font(.headline)
+                    Text("New note").foregroundColor(.white).font(.headline)
                 }
-                
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        //
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Text("Save")
-                            .foregroundColor(saveButtonColor)
+                    Button(action: saveNote) {
+                        Text("Save").foregroundColor(saveButtonColor)
                     }
-                    .disabled(!saveButtonIsValid)
+                    .disabled(noteLabel.isEmpty)
                 }
             }
         }
     }
     
-    private var saveButtonIsValid: Bool {
-        return !noteLabel.isEmpty
+    private var saveButtonColor: Color {
+        return noteLabel.isEmpty ? Color.theme.text.notActive : Color.theme.other.primary
     }
     
-    private var saveButtonColor: Color {
-        return saveButtonIsValid ? Color.theme.other.primary : Color.theme.text.notActive
+    private func saveNote() {
+        viewModel.addNote(title: noteLabel, date: viewModel.selectedDate)
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
@@ -63,16 +52,12 @@ extension NewNoteView {
         HStack {
             HStack {
                 Text("Date")
-                DatePicker("",
-                           selection: $selectedDate,
-                           displayedComponents: .date)
+                DatePicker("", selection: $viewModel.selectedDate, displayedComponents: .date)
             }
             Spacer()
             HStack {
                 Text("Time")
-                DatePicker("",
-                           selection: $selectedDate,
-                           displayedComponents: .hourAndMinute)
+                DatePicker("", selection: $viewModel.selectedDate, displayedComponents: .hourAndMinute)
             }
         }
         .labelsHidden()
@@ -84,4 +69,5 @@ extension NewNoteView {
 
 #Preview {
     NewNoteView()
+        .environmentObject(NoteViewModel())
 }
