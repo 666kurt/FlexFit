@@ -21,7 +21,6 @@ struct TextFieldView: View {
                 .stroke(Color.theme.other.primary, lineWidth: 2)
         )
         .background(Color.theme.background.main)
-//        .padding(.bottom, 15)
     }
 }
 

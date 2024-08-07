@@ -82,12 +82,14 @@ extension TrainingScreen {
                 VStack(spacing: 4) {
                     Text(trainingViewModel.trainingDays)
                         .font(.title).bold()
-                        .lineLimit(1)
                         .foregroundColor(Color.theme.other.primary)
+                        .frame(maxWidth: 50, alignment: .leading)
+                        .fixedSize(horizontal: true, vertical: false)
+                        .truncationMode(.tail)
                     Text("Quantity training days")
                         .font(.caption2)
-                        .lineLimit(1)
                         .foregroundColor(Color.theme.text.notActive)
+                    
                 }
                 
                 Spacer()
@@ -96,6 +98,9 @@ extension TrainingScreen {
                     Text(trainingViewModel.trainingHours)
                         .font(.title).bold()
                         .foregroundColor(Color.theme.other.primary)
+                        .frame(maxWidth: 50, alignment: .leading)
+                        .fixedSize(horizontal: true, vertical: false)
+                        .truncationMode(.tail)
                     Text("Number of training hours")
                         .font(.caption2)
                         .foregroundColor(Color.theme.text.notActive)

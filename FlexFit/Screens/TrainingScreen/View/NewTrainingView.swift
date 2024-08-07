@@ -6,29 +6,37 @@ struct NewTrainingView: View {
 
     var body: some View {
         NavigationView {
-            VStack(spacing: 15) {
+            ScrollView {
                 
-                TextFieldView(placeholder: "Name training", queryText: $viewModel.trainingLabel)
-                
-                dateAndTimeView
-                
-                TextFieldView(placeholder: "Repetitions", queryText: $viewModel.trainingRepetitions)
-                
-                TextFieldView(placeholder: "Approaches", queryText: $viewModel.trainingApproaches)
-                
-                TextFieldView(placeholder: "Weight", queryText: $viewModel.trainingWeight)
-                
-                TextFieldView(placeholder: "Enter description", queryText: $viewModel.trainingDescription)
-                
-                TrainingSliderView(title: "Training time", value: $viewModel.trainingTime, end: "60")
-                
-                TrainingSliderView(title: "Rest time", value: $viewModel.restTime, end: "60")
+                VStack(spacing: 15) {
+                    TextFieldView(placeholder: "Name training", queryText: $viewModel.trainingLabel)
+                    
+                    dateAndTimeView
+                    
+                    TextFieldView(placeholder: "Repetitions", queryText: $viewModel.trainingRepetitions)
+                        .keyboardType(.decimalPad)
+                    
+                    TextFieldView(placeholder: "Approaches", queryText: $viewModel.trainingApproaches)
+                        .keyboardType(.decimalPad)
+                    
+                    TextFieldView(placeholder: "Weight", queryText: $viewModel.trainingWeight)
+                        .keyboardType(.decimalPad)
+                    
+                    TextFieldView(placeholder: "Enter description", queryText: $viewModel.trainingDescription)
+                    
+                    TrainingSliderView(title: "Training time", value: $viewModel.trainingTime, end: "60")
+                    
+                    TrainingSliderView(title: "Rest time", value: $viewModel.restTime, end: "60")
+                }
                 
             }
             .padding(20)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(Color.theme.background.main.ignoresSafeArea())
             .navigationBarTitleDisplayMode(.inline)
+            .onTapGesture {
+                UIApplication.shared.endEditing(true)
+            }
             .toolbar {
                 
                 ToolbarItem(placement: .topBarLeading) {

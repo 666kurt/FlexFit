@@ -15,15 +15,20 @@ struct EditPlanView: View {
                 
                 TextFieldView(placeholder: "Quantity training days",
                               queryText: $trainingDays)
+                .keyboardType(.decimalPad)
                 
                 TextFieldView(placeholder: "Number of training hours",
                               queryText: $trainingHours)
+                .keyboardType(.decimalPad)
 
             }
             .padding(20)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(Color.theme.background.main.ignoresSafeArea())
             .navigationBarTitleDisplayMode(.inline)
+            .onTapGesture {
+                UIApplication.shared.endEditing(true)
+            }
             .toolbar {
                 
                 ToolbarItem(placement: .principal) {

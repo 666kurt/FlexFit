@@ -26,6 +26,7 @@
 		FC57E6F92C63734300B4C2C5 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC57E6F82C63734300B4C2C5 /* OnboardingScreen.swift */; };
 		FC57E6FB2C63738400B4C2C5 /* OnboardingStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC57E6FA2C63738400B4C2C5 /* OnboardingStepView.swift */; };
 		FC57E6FD2C6373B100B4C2C5 /* CustomTabIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC57E6FC2C6373B100B4C2C5 /* CustomTabIndicator.swift */; };
+		FC57E6FF2C63C4D400B4C2C5 /* UIApplication+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC57E6FE2C63C4D400B4C2C5 /* UIApplication+extensions.swift */; };
 		FCCDC9242C60C58F004A153F /* FlexFitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9232C60C58F004A153F /* FlexFitApp.swift */; };
 		FCCDC9262C60C58F004A153F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9252C60C58F004A153F /* MainView.swift */; };
 		FCCDC9282C60C591004A153F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCCDC9272C60C591004A153F /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		FC57E6F82C63734300B4C2C5 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		FC57E6FA2C63738400B4C2C5 /* OnboardingStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStepView.swift; sourceTree = "<group>"; };
 		FC57E6FC2C6373B100B4C2C5 /* CustomTabIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabIndicator.swift; sourceTree = "<group>"; };
+		FC57E6FE2C63C4D400B4C2C5 /* UIApplication+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+extensions.swift"; sourceTree = "<group>"; };
 		FCCDC9202C60C58F004A153F /* FlexFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCDC9232C60C58F004A153F /* FlexFitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexFitApp.swift; sourceTree = "<group>"; };
 		FCCDC9252C60C58F004A153F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				FCCDC94B2C60CBB7004A153F /* Color+extensions.swift */,
+				FC57E6FE2C63C4D400B4C2C5 /* UIApplication+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				FCCDC9582C610E97004A153F /* NoteRowView.swift in Sources */,
 				FC57E6DE2C622EB900B4C2C5 /* TrainingPlan+CoreDataProperties.swift in Sources */,
 				FC57E6F72C63723100B4C2C5 /* SplashScreen.swift in Sources */,
+				FC57E6FF2C63C4D400B4C2C5 /* UIApplication+extensions.swift in Sources */,
 				FCCDC96B2C6176C4004A153F /* AlertView.swift in Sources */,
 				FCCDC9242C60C58F004A153F /* FlexFitApp.swift in Sources */,
 				FC57E6EF2C62525300B4C2C5 /* TrainingDetailCardView.swift in Sources */,

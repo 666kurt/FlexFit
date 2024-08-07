@@ -11,6 +11,7 @@ struct NoteRowView: View {
             HStack {
                 Text(note.title)
                     .foregroundColor(Color.theme.text.main)
+                    .lineLimit(1)
                 
                 Spacer()
                 

@@ -13,6 +13,9 @@ struct TrainingDetailCardView: View {
                 Text(value)
                     .bold()
                     .lineLimit(1)
+//                    .frame(maxWidth: 50, alignment: .leading)
+//                    .fixedSize(horizontal: true, vertical: false)
+                    .truncationMode(.tail)
             }
             .font(.title2)
             .foregroundColor(Color.theme.other.primary)
@@ -31,6 +34,6 @@ struct TrainingDetailCardView: View {
 
 #Preview {
     TrainingDetailCardView(image: "repeat",
-                           value: "15",
+                           value: "12",
                            title: "Repetitions")
 }

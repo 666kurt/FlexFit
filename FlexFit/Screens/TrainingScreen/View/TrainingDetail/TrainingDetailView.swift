@@ -6,58 +6,71 @@ struct TrainingDetailView: View {
     @EnvironmentObject var trainingViewModel: TrainingViewModel
     
     @State private var showEditingSheet: Bool = false
+    @State private var showAlert: Bool = false
     let training: Training
 
     var body: some View {
         NavigationView {
-            VStack(spacing: 15) {
-                detailDateView
-                detailInfoView
-                detailDescriptionView
-            }
-            .padding(20)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-            .background(Color.theme.background.main.ignoresSafeArea())
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        HStack {
-                            Image(systemName: "chevron.left")
-                            Text("Back")
-                        }.foregroundColor(Color.theme.other.primary)
-                    }
+            ZStack {
+                VStack(spacing: 15) {
+                    detailDateView
+                    detailInfoView
+                    detailDescriptionView
                 }
-                
-                ToolbarItem(placement: .principal) {
-                    Text(training.title)
-                        .foregroundColor(.white)
-                        .font(.headline)
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    HStack {
+                .padding(20)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                .background(Color.theme.background.main.ignoresSafeArea())
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
                         Button {
-                            showEditingSheet.toggle()
-                        } label: {
-                            Image(systemName: "pencil")
-                                .foregroundColor(Color.theme.other.primary)
-                        }
-                        
-                        Button {
-                            trainingViewModel.deleteTraining(training: training)
                             presentationMode.wrappedValue.dismiss()
                         } label: {
-                            Image(systemName: "trash.fill")
-                                .foregroundColor(Color.theme.other.primary)
+                            HStack {
+                                Image(systemName: "chevron.left")
+                                Text("Back")
+                            }.foregroundColor(Color.theme.other.primary)
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .principal) {
+                        Text(training.title)
+                            .foregroundColor(.white)
+                            .font(.headline)
+                            .lineLimit(1)
+                    }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        HStack {
+                            Button {
+                                showEditingSheet.toggle()
+                            } label: {
+                                Image(systemName: "pencil")
+                                    .foregroundColor(Color.theme.other.primary)
+                            }
+                            
+                            Button {
+                                showAlert.toggle()
+                            } label: {
+                                Image(systemName: "trash.fill")
+                                    .foregroundColor(Color.theme.other.primary)
+                            }
                         }
                     }
                 }
-            }
-            .sheet(isPresented: $showEditingSheet) {
-                TrainingDetailEditingView(training: training)
+                .sheet(isPresented: $showEditingSheet) {
+                    TrainingDetailEditingView(training: training)
+                }
+                
+                if showAlert {
+                    AlertView(showAlert: $showAlert,
+                              title: "Delete",
+                              description: "Are you sure you want to delete?",
+                              onDelete: {
+                        trainingViewModel.deleteTraining(training: training)
+                        presentationMode.wrappedValue.dismiss()
+                    })
+                }
             }
         }
     }
@@ -75,15 +88,15 @@ extension TrainingDetailView {
         VStack(spacing: 10) {
             HStack(spacing: 10) {
                 TrainingDetailCardView(image: "repeat",
-                                       value: training.repetitions,
+                                       value: "\(training.repetitions)",
                                        title: "Repetitions")
                 
                 TrainingDetailCardView(image: "figure.run.square.stack",
-                                       value: training.approaches,
+                                       value: "\(training.approaches)",
                                        title: "Approaches")
                 
                 TrainingDetailCardView(image: "dumbbell",
-                                       value: training.weight,
+                                       value: "\(training.weight)",
                                        title: "Weight")
             }
             HStack(spacing: 10) {
