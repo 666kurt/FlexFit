@@ -10,13 +10,13 @@ struct WeekCalendarView: View {
                 let startOfWeek = self.startOfWeek(self.selectedDate)
                 let date = calendar.date(byAdding: .day, value: index, to: startOfWeek)!
                 
-                VStack(spacing: 0) {
+                VStack(spacing: 2) {
                     Text(self.dayOfWeekShortName(for: date))
                         .foregroundColor(.gray)
                     
                     Text("\(calendar.component(.day, from: date))")
                         .foregroundColor(calendar.isDate(self.selectedDate, inSameDayAs: date) ? .white : .white)
-                        .padding(12)
+                        .padding(10)
                         .background(calendar.isDate(self.selectedDate, inSameDayAs: date) ? Color.blue : Color.clear)
                         .clipShape(Circle())
                 }

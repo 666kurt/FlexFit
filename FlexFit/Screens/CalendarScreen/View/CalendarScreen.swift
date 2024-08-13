@@ -19,9 +19,9 @@ struct CalendarScreen: View {
                     }
                 
                 if viewModel.notesForSelectedDate.isEmpty {
-                    EmptyListView(emodji: "📆",
-                                  title: "Add your first note",
-                                  isPresented: $showNewNote)
+                        EmptyListView(emodji: "📆",
+                                      title: "Add your first note",
+                                      isPresented: $showNewNote)
                 } else {
                     listNotesView
                 }

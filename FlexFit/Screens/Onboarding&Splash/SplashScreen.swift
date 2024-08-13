@@ -8,37 +8,41 @@ struct SplashScreen: View {
     let persistenceController: PersistenceController
     
     var body: some View {
-        ZStack {
-            Image("splash")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
-            
-            VStack(spacing: 100) {
-                Image("logo")
+        GeometryReader { geometry in
+            ZStack {
+                Image("splash")
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
+                    .ignoresSafeArea()
                 
-                HStack(spacing: 8) {
+                VStack(spacing: 50) {
+                    Image("logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: geometry.size.width * 0.6, height: geometry.size.height * 0.3)
                     
-                    ProgressView(value: progress, total: 100)
-                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                    
-                    Text("\(Int(progress))%")
-                        .font(.body)
-                        .foregroundColor(Color.theme.text.main)
+                    HStack(spacing: 8) {
+                        ProgressView(value: progress, total: 100)
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .scaleEffect(1.5) // Adjust size if needed
+                        
+                        Text("\(Int(progress))%")
+                            .font(.body)
+                            .foregroundColor(Color.white)
+                    }
+                    .padding(.top, 20) // Adjust padding as needed
                 }
             }
-        }
-        .onAppear {
-            startLoading()
-        }
-        .fullScreenCover(isPresented: $isActive) {
-            if showOnboarding {
-                OnboardingScreen(showOnboarding: $showOnboarding)
-            } else {
-                MainView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            .onAppear {
+                startLoading()
+            }
+            .fullScreenCover(isPresented: $isActive) {
+                if showOnboarding {
+                    OnboardingScreen(showOnboarding: $showOnboarding)
+                } else {
+                    MainView()
+                        .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                }
             }
         }
     }
@@ -54,6 +58,7 @@ struct SplashScreen: View {
         }
     }
 }
+
 
 #Preview {
     SplashScreen(showOnboarding: .constant(true), persistenceController: PersistenceController.shared)
