@@ -28,7 +28,6 @@ struct EmptyListView: View {
                 .background(Color.theme.other.primary)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             }
-            
         }
         .frame(maxHeight: .infinity)
     }

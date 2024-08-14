@@ -5,7 +5,7 @@ import UserNotifications
 struct MainView: View {
     
     @StateObject var router = Router.shared
-    @StateObject var noteViewModel = NoteViewModel()
+    @StateObject var noteViewModel = CalendarViewModel()
     @StateObject var trainingViewModel = TrainingViewModel()
     
     var body: some View {
@@ -57,6 +57,6 @@ struct MainView: View {
 
 #Preview {
     MainView()
-        .environmentObject(NoteViewModel())
+        .environmentObject(CalendarViewModel())
         .environmentObject(TrainingViewModel())
 }

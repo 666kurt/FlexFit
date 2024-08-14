@@ -2,7 +2,7 @@ import SwiftUI
 
 struct NewNoteView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var viewModel: NoteViewModel
+    @EnvironmentObject var viewModel: CalendarViewModel
     @State private var noteLabel: String = ""
     
     var body: some View {
@@ -69,5 +69,5 @@ extension NewNoteView {
 
 #Preview {
     NewNoteView()
-        .environmentObject(NoteViewModel())
+        .environmentObject(CalendarViewModel())
 }

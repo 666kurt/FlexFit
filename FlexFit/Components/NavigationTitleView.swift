@@ -9,7 +9,7 @@ struct NavigationTitleView: View {
             .font(.largeTitle).bold()
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundColor(Color.theme.text.main)
-            .padding(.top, 8)
+            .padding(.top, 10)
     }
 }
 

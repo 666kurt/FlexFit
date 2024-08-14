@@ -37,12 +37,12 @@
 		FCCDC9452C60CA4F004A153F /* TrainingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9442C60CA4F004A153F /* TrainingScreen.swift */; };
 		FCCDC94A2C60CAA6004A153F /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9492C60CAA6004A153F /* SettingsScreen.swift */; };
 		FCCDC94C2C60CBB7004A153F /* Color+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC94B2C60CBB7004A153F /* Color+extensions.swift */; };
-		FCCDC94E2C60D255004A153F /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC94D2C60D255004A153F /* CalendarView.swift */; };
+		FCCDC94E2C60D255004A153F /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC94D2C60D255004A153F /* WeekCalendarView.swift */; };
 		FCCDC9522C60E682004A153F /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9512C60E682004A153F /* NavigationTitleView.swift */; };
 		FCCDC9542C60FBDC004A153F /* NewNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9532C60FBDC004A153F /* NewNoteView.swift */; };
 		FCCDC9562C610552004A153F /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9552C610552004A153F /* TextFieldView.swift */; };
 		FCCDC9582C610E97004A153F /* NoteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9572C610E97004A153F /* NoteRowView.swift */; };
-		FCCDC95A2C611BC0004A153F /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9592C611BC0004A153F /* NoteViewModel.swift */; };
+		FCCDC95A2C611BC0004A153F /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC9592C611BC0004A153F /* CalendarViewModel.swift */; };
 		FCCDC96B2C6176C4004A153F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC96A2C6176C4004A153F /* AlertView.swift */; };
 		FCCDC96D2C6177C9004A153F /* NewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC96C2C6177C9004A153F /* NewButtonView.swift */; };
 		FCCDC96F2C6180C8004A153F /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC96E2C6180C8004A153F /* EmptyListView.swift */; };
@@ -80,12 +80,12 @@
 		FCCDC9442C60CA4F004A153F /* TrainingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingScreen.swift; sourceTree = "<group>"; };
 		FCCDC9492C60CAA6004A153F /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		FCCDC94B2C60CBB7004A153F /* Color+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extensions.swift"; sourceTree = "<group>"; };
-		FCCDC94D2C60D255004A153F /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		FCCDC94D2C60D255004A153F /* WeekCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
 		FCCDC9512C60E682004A153F /* NavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
 		FCCDC9532C60FBDC004A153F /* NewNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteView.swift; sourceTree = "<group>"; };
 		FCCDC9552C610552004A153F /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		FCCDC9572C610E97004A153F /* NoteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRowView.swift; sourceTree = "<group>"; };
-		FCCDC9592C611BC0004A153F /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
+		FCCDC9592C611BC0004A153F /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		FCCDC96A2C6176C4004A153F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		FCCDC96C2C6177C9004A153F /* NewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewButtonView.swift; sourceTree = "<group>"; };
 		FCCDC96E2C6180C8004A153F /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 			children = (
 				FCCDC9362C60C695004A153F /* Core */,
 				FCCDC9382C60C6DD004A153F /* Screens */,
-				FCCDC9372C60C6D5004A153F /* Models */,
+				FCCDC9372C60C6D5004A153F /* DataManager */,
 				FCCDC93B2C60C708004A153F /* Components */,
 				FCCDC93A2C60C6F9004A153F /* Utilities */,
 				FCCDC9392C60C6E4004A153F /* Extensions */,
@@ -182,21 +182,22 @@
 		FCCDC9362C60C695004A153F /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				FCCDC92E2C60C591004A153F /* FlexFit.xcdatamodeld */,
 				FCCDC9232C60C58F004A153F /* FlexFitApp.swift */,
 				FCCDC9272C60C591004A153F /* Assets.xcassets */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		FCCDC9372C60C6D5004A153F /* Models */ = {
+		FCCDC9372C60C6D5004A153F /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
+				FC57E6D82C620FEC00B4C2C5 /* PersistenceController.swift */,
+				FCCDC92E2C60C591004A153F /* FlexFit.xcdatamodeld */,
 				FC57E6E32C6236FC00B4C2C5 /* Training */,
 				FC57E6DA2C622EA700B4C2C5 /* TrainingPlan */,
 				FCCDC95F2C611EBE004A153F /* Notes */,
 			);
-			path = Models;
+			path = DataManager;
 			sourceTree = "<group>";
 		};
 		FCCDC9382C60C6DD004A153F /* Screens */ = {
@@ -224,7 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				FCCDC93C2C60C947004A153F /* Router.swift */,
-				FC57E6D82C620FEC00B4C2C5 /* PersistenceController.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -244,8 +244,9 @@
 		FCCDC93E2C60CA05004A153F /* CalendarScreen */ = {
 			isa = PBXGroup;
 			children = (
+				FCCDC93F2C60CA15004A153F /* CalendarScreen.swift */,
+				FCCDC9592C611BC0004A153F /* CalendarViewModel.swift */,
 				FCCDC9412C60CA27004A153F /* View */,
-				FCCDC9422C60CA2E004A153F /* ViewModel */,
 			);
 			path = CalendarScreen;
 			sourceTree = "<group>";
@@ -253,27 +254,19 @@
 		FCCDC9412C60CA27004A153F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FCCDC93F2C60CA15004A153F /* CalendarScreen.swift */,
-				FCCDC94D2C60D255004A153F /* CalendarView.swift */,
+				FCCDC94D2C60D255004A153F /* WeekCalendarView.swift */,
 				FCCDC9532C60FBDC004A153F /* NewNoteView.swift */,
 				FCCDC9572C610E97004A153F /* NoteRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		FCCDC9422C60CA2E004A153F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				FCCDC9592C611BC0004A153F /* NoteViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		FCCDC9432C60CA3E004A153F /* TrainingScreen */ = {
 			isa = PBXGroup;
 			children = (
+				FCCDC9442C60CA4F004A153F /* TrainingScreen.swift */,
+				FC57E6E82C62390900B4C2C5 /* TrainingViewModel.swift */,
 				FCCDC9462C60CA5C004A153F /* View */,
-				FCCDC9472C60CA63004A153F /* ViewModel */,
 			);
 			path = TrainingScreen;
 			sourceTree = "<group>";
@@ -282,21 +275,12 @@
 			isa = PBXGroup;
 			children = (
 				FC57E6F22C62ACF600B4C2C5 /* TrainingDetail */,
-				FCCDC9442C60CA4F004A153F /* TrainingScreen.swift */,
 				FC57E6D02C62038F00B4C2C5 /* NewTrainingView.swift */,
 				FC57E6D22C620BB100B4C2C5 /* EditPlanView.swift */,
 				FC57E6E12C62314700B4C2C5 /* TrainingRowView.swift */,
 				FC57E6F32C62BEB300B4C2C5 /* TrainingSliderView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		FCCDC9472C60CA63004A153F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				FC57E6E82C62390900B4C2C5 /* TrainingViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		FCCDC9482C60CA7B004A153F /* SettingsScreen */ = {
@@ -386,7 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCCDC94E2C60D255004A153F /* CalendarView.swift in Sources */,
+				FCCDC94E2C60D255004A153F /* WeekCalendarView.swift in Sources */,
 				FC57E6E22C62314700B4C2C5 /* TrainingRowView.swift in Sources */,
 				FCCDC94A2C60CAA6004A153F /* SettingsScreen.swift in Sources */,
 				FC57E6F12C6259BD00B4C2C5 /* TrainingDetailEditingView.swift in Sources */,
@@ -403,7 +387,7 @@
 				FCCDC96F2C6180C8004A153F /* EmptyListView.swift in Sources */,
 				FC57E6ED2C62493200B4C2C5 /* TrainingDetailView.swift in Sources */,
 				FC57E6D72C620FB300B4C2C5 /* Note+CoreDataProperties.swift in Sources */,
-				FCCDC95A2C611BC0004A153F /* NoteViewModel.swift in Sources */,
+				FCCDC95A2C611BC0004A153F /* CalendarViewModel.swift in Sources */,
 				FCCDC9562C610552004A153F /* TextFieldView.swift in Sources */,
 				FC57E6D32C620BB100B4C2C5 /* EditPlanView.swift in Sources */,
 				FCCDC9302C60C591004A153F /* FlexFit.xcdatamodeld in Sources */,

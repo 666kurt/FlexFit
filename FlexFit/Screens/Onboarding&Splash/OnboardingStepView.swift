@@ -12,9 +12,10 @@ struct OnboardingStepView: View {
             Image(image)
                 .resizable()
                 .ignoresSafeArea()
+                .scaledToFill()
             
             Image(titleImage)
-                .padding(.top, 35)
+                .padding(.top, 60)
 
         }
         

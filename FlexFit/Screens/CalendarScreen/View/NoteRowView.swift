@@ -3,7 +3,7 @@ import UserNotifications
 
 struct NoteRowView: View {
     
-    @EnvironmentObject private var viewModel: NoteViewModel
+    @EnvironmentObject private var viewModel: CalendarViewModel
     let note: Note
     
     var body: some View {
@@ -97,5 +97,5 @@ struct NoteRowView: View {
 
 #Preview {
     CalendarScreen()
-        .environmentObject(NoteViewModel())
+        .environmentObject(CalendarViewModel())
 }

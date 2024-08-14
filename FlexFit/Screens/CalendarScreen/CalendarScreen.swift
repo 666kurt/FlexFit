@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CalendarScreen: View {
-    @EnvironmentObject private var viewModel: NoteViewModel
+    @EnvironmentObject private var viewModel: CalendarViewModel
     @State private var showNewNote: Bool = false
     @State private var showAlert: Bool = false
     @State private var indexSetToDelete: IndexSet?
@@ -78,5 +78,5 @@ extension CalendarScreen {
 
 #Preview {
     CalendarScreen()
-        .environmentObject(NoteViewModel())
+        .environmentObject(CalendarViewModel())
 }

@@ -16,25 +16,31 @@ struct SplashScreen: View {
                     .ignoresSafeArea()
                 
                 VStack(spacing: 50) {
+                    
+                    Spacer()
+                    
                     Image("logo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: geometry.size.width * 0.6, height: geometry.size.height * 0.3)
+                        .frame(width: geometry.size.width * 0.8)
                     
-                    HStack(spacing: 8) {
+                    HStack(spacing: 12) {
                         ProgressView(value: progress, total: 100)
                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                            .scaleEffect(1.5) // Adjust size if needed
+                            .scaleEffect(1.5)
                         
                         Text("\(Int(progress))%")
                             .font(.body)
                             .foregroundColor(Color.white)
                     }
-                    .padding(.top, 20) // Adjust padding as needed
+                    .padding(.vertical, 20)
+                    
+                    Spacer()
+                    Spacer()
                 }
-            }
-            .onAppear {
-                startLoading()
+                .onAppear {
+                    startLoading()
+                }
             }
             .fullScreenCover(isPresented: $isActive) {
                 if showOnboarding {
@@ -58,6 +64,7 @@ struct SplashScreen: View {
         }
     }
 }
+
 
 
 #Preview {

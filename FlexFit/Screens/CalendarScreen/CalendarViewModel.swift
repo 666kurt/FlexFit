@@ -1,7 +1,7 @@
 import SwiftUI
 import CoreData
 
-class NoteViewModel: ObservableObject {
+class CalendarViewModel: ObservableObject {
     @Published var notesForSelectedDate: [Note] = []
     @Published var selectedDate: Date = Date()
     private let viewContext: NSManagedObjectContext

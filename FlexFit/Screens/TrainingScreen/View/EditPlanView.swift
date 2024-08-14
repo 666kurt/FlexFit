@@ -32,7 +32,7 @@ struct EditPlanView: View {
             .toolbar {
                 
                 ToolbarItem(placement: .principal) {
-                    Text("New note")
+                    Text("Edit plan")
                         .foregroundColor(.white)
                         .font(.headline)
                 }
