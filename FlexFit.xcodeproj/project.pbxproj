@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC4CF56D2C6E431A00764E40 /* Image+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4CF56C2C6E431A00764E40 /* Image+extension.swift */; };
 		FC57E6D12C62038F00B4C2C5 /* NewTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC57E6D02C62038F00B4C2C5 /* NewTrainingView.swift */; };
 		FC57E6D32C620BB100B4C2C5 /* EditPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC57E6D22C620BB100B4C2C5 /* EditPlanView.swift */; };
 		FC57E6D62C620FB300B4C2C5 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC57E6D42C620FB300B4C2C5 /* Note+CoreDataClass.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC4CF56C2C6E431A00764E40 /* Image+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+extension.swift"; sourceTree = "<group>"; };
 		FC57E6D02C62038F00B4C2C5 /* NewTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrainingView.swift; sourceTree = "<group>"; };
 		FC57E6D22C620BB100B4C2C5 /* EditPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlanView.swift; sourceTree = "<group>"; };
 		FC57E6D42C620FB300B4C2C5 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -170,8 +172,8 @@
 			children = (
 				FCCDC9362C60C695004A153F /* Core */,
 				FCCDC9382C60C6DD004A153F /* Screens */,
-				FCCDC9372C60C6D5004A153F /* DataManager */,
 				FCCDC93B2C60C708004A153F /* Components */,
+				FCCDC9372C60C6D5004A153F /* DataManager */,
 				FCCDC93A2C60C6F9004A153F /* Utilities */,
 				FCCDC9392C60C6E4004A153F /* Extensions */,
 				FCCDC9292C60C591004A153F /* Preview Content */,
@@ -225,6 +227,7 @@
 			children = (
 				FCCDC94B2C60CBB7004A153F /* Color+extensions.swift */,
 				FC57E6FE2C63C4D400B4C2C5 /* UIApplication+extensions.swift */,
+				FC4CF56C2C6E431A00764E40 /* Image+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				FCCDC94E2C60D255004A153F /* WeekCalendarView.swift in Sources */,
 				FC57E6E22C62314700B4C2C5 /* TrainingRowView.swift in Sources */,
 				FCCDC94A2C60CAA6004A153F /* SettingsScreen.swift in Sources */,
+				FC4CF56D2C6E431A00764E40 /* Image+extension.swift in Sources */,
 				FC57E6F12C6259BD00B4C2C5 /* TrainingDetailEditingView.swift in Sources */,
 				FCCDC9402C60CA15004A153F /* CalendarScreen.swift in Sources */,
 				FCCDC94C2C60CBB7004A153F /* Color+extensions.swift in Sources */,
@@ -565,7 +569,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -600,7 +604,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

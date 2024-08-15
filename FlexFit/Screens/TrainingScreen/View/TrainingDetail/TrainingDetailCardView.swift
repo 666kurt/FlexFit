@@ -13,8 +13,6 @@ struct TrainingDetailCardView: View {
                 Text(value)
                     .bold()
                     .lineLimit(1)
-//                    .frame(maxWidth: 50, alignment: .leading)
-//                    .fixedSize(horizontal: true, vertical: false)
                     .truncationMode(.tail)
             }
             .font(.title2)

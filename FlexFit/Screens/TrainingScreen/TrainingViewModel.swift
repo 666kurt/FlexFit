@@ -14,6 +14,7 @@ class TrainingViewModel: ObservableObject {
     @Published var trainingDate: Date = Date()
     @Published var trainingTime: Double = 0.0
     @Published var restTime: Double = 0.0
+    @Published var trainingImage: UIImage?
     
     // Training statistic props
     @Published var trainingDays: String = "0"
@@ -73,6 +74,7 @@ class TrainingViewModel: ObservableObject {
         newTraining.desc = trainingDescription
         newTraining.trainingTime = trainingTime
         newTraining.restTime = restTime
+        newTraining.image = trainingImage?.pngData()
         
         saveContext()
         fetchTrainings()
@@ -85,7 +87,7 @@ class TrainingViewModel: ObservableObject {
         fetchTrainings()
     }
     
-    func updateTraining(training: Training, title: String, date: Date, repetitions: String, approaches: String, weight: String, description: String, trainingTime: Double, restTime: Double) {
+    func updateTraining(training: Training, title: String, date: Date, repetitions: String, approaches: String, weight: String, description: String, trainingTime: Double, restTime: Double, image: UIImage?) {
         training.title = title
         training.date = date
         training.repetitions = repetitions
@@ -94,6 +96,7 @@ class TrainingViewModel: ObservableObject {
         training.desc = description
         training.trainingTime = trainingTime
         training.restTime = restTime
+        training.image = image?.pngData()
         
         saveContext()
         fetchTrainings()
@@ -108,6 +111,7 @@ class TrainingViewModel: ObservableObject {
         trainingDate = Date()
         trainingTime = 0.0
         restTime = 0.0
+        trainingImage = nil
     }
     
     private func saveContext() {

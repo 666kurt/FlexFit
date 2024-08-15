@@ -4,10 +4,21 @@ struct TrainingRowView: View {
     
     var trainingName: String
     var trainingDate: Date
+    var trainingImage: Data?
     var action: () -> Void
     
     var body: some View {
-        HStack {
+        HStack(spacing: 10) {
+        
+            if let imageData = trainingImage, let image = UIImage.from(data: imageData) {
+                Image(uiImage: image)
+                    .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .scaledToFit()
+                    .aspectRatio(1.5, contentMode: .fill)
+                    .frame(width: 100, height: 50)
+            }
+            
             VStack(alignment: .leading, spacing: 10) {
                 Text(trainingName)
                     .font(.body).fontWeight(.semibold)
@@ -41,7 +52,6 @@ struct TrainingRowView: View {
 }
 
 #Preview {
-    TrainingRowView(trainingName: "Cardio",
-                    trainingDate: Date(), action: {})
-        .padding()
+    TrainingScreen()
+        .environmentObject(TrainingViewModel())
 }

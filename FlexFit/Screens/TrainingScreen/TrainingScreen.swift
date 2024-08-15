@@ -120,7 +120,9 @@ extension TrainingScreen {
                 LazyVStack(spacing: 15) {
                     ForEach(trainingViewModel.trainings) { training in
                         TrainingRowView(trainingName: training.title,
-                                        trainingDate: training.date ?? Date(), action: {
+                                        trainingDate: training.date ?? Date(),
+                                        trainingImage: training.image,
+                                        action: {
                             selectedTraining = training
                         })
                     }

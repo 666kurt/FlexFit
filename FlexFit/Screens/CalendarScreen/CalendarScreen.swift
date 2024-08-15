@@ -10,9 +10,6 @@ struct CalendarScreen: View {
         ZStack {
             VStack(spacing: 20) {
                 
-                NavigationTitleView(title: "My Calendar")
-                    .padding(.leading, 20)
-                
                 WeekCalendarView(selectedDate: $viewModel.selectedDate)
                     .onChange(of: viewModel.selectedDate) { _ in
                         viewModel.fetchNotes(for: viewModel.selectedDate)

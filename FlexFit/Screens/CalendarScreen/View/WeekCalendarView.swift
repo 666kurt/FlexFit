@@ -27,6 +27,7 @@ struct WeekCalendarView: View {
             }
         }
         .padding(.horizontal, 10)
+        .padding(.top, 10)
         .onAppear {
             self.selectedDate = Date()
         }

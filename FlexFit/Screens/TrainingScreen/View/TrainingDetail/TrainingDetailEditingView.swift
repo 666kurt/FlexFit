@@ -5,11 +5,18 @@ struct TrainingDetailEditingView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var trainingViewModel: TrainingViewModel
     
+    private let assetNames = ["training1", "training2", "training3", "training4", "training5", "training6", "training7", "training8", "training9", "training10", "training11", "training12", "training13", "training14", "training15", "training16"]
+    
+    var rows: [GridItem] = [
+        GridItem(.fixed(100), spacing: 1),
+        GridItem(.fixed(100), spacing: 1)
+    ]
+    
     @StateObject var training: Training
     
     var body: some View {
         NavigationView {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(spacing: 15) {
                     
                     
@@ -31,7 +38,30 @@ struct TrainingDetailEditingView: View {
                     TrainingSliderView(title: "Training time", value: $training.trainingTime, end: "60")
                     
                     TrainingSliderView(title: "Rest time", value: $training.restTime, end: "60")
+
                     
+                    VStack(alignment: .leading) {
+                        Text("Select a training image:")
+                            .foregroundColor(Color.theme.text.main)
+                            .font(.headline)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHGrid(rows: rows, spacing: 10) {
+                                ForEach(assetNames, id: \.self) { assetName in
+                                    Image(assetName)
+                                        .resizable()
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                        .scaledToFit()
+                                        .aspectRatio(1.5, contentMode: .fill)
+                                        .frame(width: 150, height: 100)
+                                        .opacity(training.image == UIImage(named: assetName)?.pngData() ? 1 : 0.5)
+                                        .onTapGesture {
+                                            training.image = UIImage(named: assetName)?.pngData()
+                                        }
+                                }
+                            }
+                        }
+                    }
                     
                 }
             }
@@ -60,7 +90,8 @@ struct TrainingDetailEditingView: View {
                                                          weight: training.weight,
                                                          description: training.desc,
                                                          trainingTime: training.trainingTime,
-                                                         restTime: training.restTime)
+                                                         restTime: training.restTime,
+                                                         image: UIImage(data: training.image ?? Data()))
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text("Save")

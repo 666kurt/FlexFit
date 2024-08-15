@@ -3,10 +3,17 @@ import SwiftUI
 struct NewTrainingView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var viewModel: TrainingViewModel
-
+    
+    private let assetNames = ["training1", "training2", "training3", "training4", "training5", "training6", "training7", "training8", "training9", "training10", "training11", "training12", "training13", "training14", "training15", "training16"]
+    
+    private var rows: [GridItem] = [
+        GridItem(.fixed(100), spacing: 1),
+        GridItem(.fixed(100), spacing: 1)
+    ]
+    
     var body: some View {
         NavigationView {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 
                 VStack(spacing: 15) {
                     TextFieldView(placeholder: "Name training", queryText: $viewModel.trainingLabel)
@@ -27,6 +34,31 @@ struct NewTrainingView: View {
                     TrainingSliderView(title: "Training time", value: $viewModel.trainingTime, end: "60")
                     
                     TrainingSliderView(title: "Rest time", value: $viewModel.restTime, end: "60")
+                    
+                    
+                    VStack(alignment: .leading) {
+                        Text("Select a training image:")
+                            .foregroundColor(Color.theme.text.main)
+                            .font(.headline)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHGrid(rows: rows, spacing: 10) {
+                                ForEach(assetNames, id: \.self) { assetName in
+                                    Image(assetName)
+                                        .resizable()
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                        .scaledToFit()
+                                        .aspectRatio(1.5, contentMode: .fill)
+                                        .frame(width: 150, height: 100)
+                                        .opacity(viewModel.trainingImage == UIImage(named: assetName) ? 1 : 0.5)
+                                        .onTapGesture {
+                                            viewModel.trainingImage = UIImage(named: assetName)
+                                        }
+                                }
+                            }
+                        }
+                    }
+
                 }
                 
             }
@@ -49,13 +81,13 @@ struct NewTrainingView: View {
                         }
                     }
                 }
-
+                
                 ToolbarItem(placement: .principal) {
                     Text("New Training")
                         .foregroundColor(.white)
                         .font(.headline)
                 }
-
+                
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         viewModel.addTraining()
@@ -68,15 +100,16 @@ struct NewTrainingView: View {
             }
         }
     }
-
+    
     private var saveButtonIsValid: Bool {
         return !viewModel.trainingLabel.isEmpty &&
         !viewModel.trainingRepetitions.isEmpty &&
         !viewModel.trainingApproaches.isEmpty &&
         !viewModel.trainingWeight.isEmpty &&
-        !viewModel.trainingDescription.isEmpty
+        !viewModel.trainingDescription.isEmpty &&
+        !(viewModel.trainingImage == nil)
     }
-
+    
     private var saveButtonColor: Color {
         return saveButtonIsValid ? Color.theme.other.primary : Color.theme.text.notActive
     }
@@ -98,7 +131,7 @@ extension NewTrainingView {
         .font(.headline)
         .foregroundColor(Color.theme.text.main)
     }
-
+    
 }
 
 #Preview {

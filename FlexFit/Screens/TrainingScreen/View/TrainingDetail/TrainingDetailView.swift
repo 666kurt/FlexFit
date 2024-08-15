@@ -13,6 +13,14 @@ struct TrainingDetailView: View {
         NavigationView {
             ZStack {
                 VStack(spacing: 15) {
+                    
+                    if let imageData = training.image, let image = UIImage.from(data: imageData) {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                    
                     detailDateView
                     detailInfoView
                     detailDescriptionView
@@ -145,6 +153,7 @@ extension TrainingDetailView {
     sampleTraining.desc = "Sample Description"
     sampleTraining.trainingTime = 45
     sampleTraining.restTime = 15
+    sampleTraining.image = UIImage(named: "training1")?.pngData()
     
     return TrainingDetailView(training: sampleTraining)
         .environmentObject(TrainingViewModel())

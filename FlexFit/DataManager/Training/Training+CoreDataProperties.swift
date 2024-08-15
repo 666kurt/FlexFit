@@ -17,6 +17,7 @@ extension Training {
     @NSManaged public var desc: String
     @NSManaged public var trainingTime: Double
     @NSManaged public var restTime: Double
+    @NSManaged public var image: Data?
 
 }
 
