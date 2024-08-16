@@ -1,6 +1,6 @@
 import Foundation
 import CoreData
-
+import SwiftUI
 
 extension Note {
 
@@ -12,6 +12,10 @@ extension Note {
     @NSManaged public var title: String
     @NSManaged public var date: Date?
     @NSManaged public var enableNotification: Bool
+    @NSManaged public var a: Double
+    @NSManaged public var r: Double
+    @NSManaged public var g: Double
+    @NSManaged public var b: Double
 
 }
 

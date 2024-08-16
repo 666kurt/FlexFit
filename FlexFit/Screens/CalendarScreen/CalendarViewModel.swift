@@ -27,12 +27,16 @@ class CalendarViewModel: ObservableObject {
         }
     }
     
-    func addNote(title: String, date: Date, enableNotification: Bool = false) {
+    func addNote(title: String, date: Date, enableNotification: Bool = false, a: Double, r: Double, g: Double, b: Double) {
         let newNote = Note(context: viewContext)
         newNote.id = UUID()
         newNote.title = title
         newNote.date = date
         newNote.enableNotification = enableNotification
+        newNote.a = a
+        newNote.r = r
+        newNote.g = g
+        newNote.b = b
         
         do {
             try viewContext.save()

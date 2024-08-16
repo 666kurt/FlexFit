@@ -3,6 +3,7 @@ import SwiftUI
 struct OnboardingScreen: View {
     
     @Binding var showOnboarding: Bool
+    @State var showEducation: Bool = false
     @State private var currentTab = 0
     
     var body: some View {
@@ -27,8 +28,9 @@ struct OnboardingScreen: View {
                     if currentTab < 2 {
                         currentTab += 1
                     } else {
-                        showOnboarding = false
-                        UserDefaults.standard.set(true, forKey: "hasSeenOnboarding")
+                        showEducation = true
+//                        showOnboarding = false
+//                        UserDefaults.standard.set(true, forKey: "hasSeenOnboarding")
                     }
                 }, label: {
                     Text("Next")
@@ -42,10 +44,13 @@ struct OnboardingScreen: View {
             .padding(.horizontal, 24)
             .padding(.bottom, 16)
         }
+        .fullScreenCover(isPresented: $showEducation, content: {
+            StartEducationScreen(showOnboarding: $showOnboarding)
+        })
     }
 }
 
 
 #Preview {
-    OnboardingScreen(showOnboarding: .constant(true))
+    OnboardingScreen(showOnboarding: .constant(true), showEducation: false)
 }

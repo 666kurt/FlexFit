@@ -51,6 +51,9 @@
 		FCCDC96B2C6176C4004A153F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC96A2C6176C4004A153F /* AlertView.swift */; };
 		FCCDC96D2C6177C9004A153F /* NewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC96C2C6177C9004A153F /* NewButtonView.swift */; };
 		FCCDC96F2C6180C8004A153F /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDC96E2C6180C8004A153F /* EmptyListView.swift */; };
+		FCEA25482C6F7CFB00EE59F0 /* StartEducationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA25472C6F7CFB00EE59F0 /* StartEducationScreen.swift */; };
+		FCEA254A2C6F84D800EE59F0 /* EndEducationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA25492C6F84D800EE59F0 /* EndEducationScreen.swift */; };
+		FCEA254C2C6F870A00EE59F0 /* ScreenshotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA254B2C6F870A00EE59F0 /* ScreenshotsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +98,9 @@
 		FCCDC96A2C6176C4004A153F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		FCCDC96C2C6177C9004A153F /* NewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewButtonView.swift; sourceTree = "<group>"; };
 		FCCDC96E2C6180C8004A153F /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		FCEA25472C6F7CFB00EE59F0 /* StartEducationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEducationScreen.swift; sourceTree = "<group>"; };
+		FCEA25492C6F84D800EE59F0 /* EndEducationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndEducationScreen.swift; sourceTree = "<group>"; };
+		FCEA254B2C6F870A00EE59F0 /* ScreenshotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +223,7 @@
 				FCCDC93E2C60CA05004A153F /* CalendarScreen */,
 				FCCDC9432C60CA3E004A153F /* TrainingScreen */,
 				FCCDC9482C60CA7B004A153F /* SettingsScreen */,
+				FCEA25462C6F7CD500EE59F0 /* EducationScreen */,
 				FC57E6F52C6371C300B4C2C5 /* Onboarding&Splash */,
 			);
 			path = Screens;
@@ -311,6 +318,16 @@
 			path = Notes;
 			sourceTree = "<group>";
 		};
+		FCEA25462C6F7CD500EE59F0 /* EducationScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FCEA25472C6F7CFB00EE59F0 /* StartEducationScreen.swift */,
+				FCEA25492C6F84D800EE59F0 /* EndEducationScreen.swift */,
+				FCEA254B2C6F870A00EE59F0 /* ScreenshotsView.swift */,
+			);
+			path = EducationScreen;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -393,6 +410,7 @@
 				FCCDC94E2C60D255004A153F /* WeekCalendarView.swift in Sources */,
 				FC57E6E22C62314700B4C2C5 /* TrainingRowView.swift in Sources */,
 				FCCDC94A2C60CAA6004A153F /* SettingsScreen.swift in Sources */,
+				FCEA254C2C6F870A00EE59F0 /* ScreenshotsView.swift in Sources */,
 				FC4CF56D2C6E431A00764E40 /* Image+extension.swift in Sources */,
 				FC57E6F12C6259BD00B4C2C5 /* TrainingDetailEditingView.swift in Sources */,
 				FCCDC9402C60CA15004A153F /* CalendarScreen.swift in Sources */,
@@ -403,6 +421,7 @@
 				FCCDC93D2C60C947004A153F /* Router.swift in Sources */,
 				FC57E6F92C63734300B4C2C5 /* OnboardingScreen.swift in Sources */,
 				FC57E6F42C62BEB300B4C2C5 /* TrainingSliderView.swift in Sources */,
+				FCEA25482C6F7CFB00EE59F0 /* StartEducationScreen.swift in Sources */,
 				FC57E6E92C62390900B4C2C5 /* TrainingViewModel.swift in Sources */,
 				FC57E6E72C62370B00B4C2C5 /* Training+CoreDataProperties.swift in Sources */,
 				FCCDC96F2C6180C8004A153F /* EmptyListView.swift in Sources */,
@@ -427,6 +446,7 @@
 				FC57E6D62C620FB300B4C2C5 /* Note+CoreDataClass.swift in Sources */,
 				FCCDC9452C60CA4F004A153F /* TrainingScreen.swift in Sources */,
 				FC57E6E62C62370B00B4C2C5 /* Training+CoreDataClass.swift in Sources */,
+				FCEA254A2C6F84D800EE59F0 /* EndEducationScreen.swift in Sources */,
 				FC57E6D12C62038F00B4C2C5 /* NewTrainingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

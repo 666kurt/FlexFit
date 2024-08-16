@@ -7,8 +7,8 @@ struct NewTrainingView: View {
     private let assetNames = ["training1", "training2", "training3", "training4", "training5", "training6", "training7", "training8", "training9", "training10", "training11", "training12", "training13", "training14", "training15", "training16"]
     
     private var rows: [GridItem] = [
-        GridItem(.fixed(100), spacing: 1),
-        GridItem(.fixed(100), spacing: 1)
+        GridItem(.fixed(100), spacing: 15),
+        GridItem(.fixed(100))
     ]
     
     var body: some View {
@@ -42,14 +42,14 @@ struct NewTrainingView: View {
                             .font(.headline)
                         
                         ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHGrid(rows: rows, spacing: 10) {
+                            LazyHGrid(rows: rows, spacing: 15) {
                                 ForEach(assetNames, id: \.self) { assetName in
                                     Image(assetName)
                                         .resizable()
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        .scaledToFit()
-                                        .aspectRatio(1.5, contentMode: .fill)
-                                        .frame(width: 150, height: 100)
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 100, height: 100)
+                                        .clipped()
+                                        .clipShape(RoundedRectangle(cornerRadius: 8))
                                         .opacity(viewModel.trainingImage == UIImage(named: assetName) ? 1 : 0.5)
                                         .onTapGesture {
                                             viewModel.trainingImage = UIImage(named: assetName)

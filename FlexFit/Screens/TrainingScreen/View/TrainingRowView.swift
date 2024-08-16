@@ -13,10 +13,10 @@ struct TrainingRowView: View {
             if let imageData = trainingImage, let image = UIImage.from(data: imageData) {
                 Image(uiImage: image)
                     .resizable()
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .scaledToFit()
-                    .aspectRatio(1.5, contentMode: .fill)
-                    .frame(width: 100, height: 50)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 100, height: 100)
+                    .clipped()
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
             }
             
             VStack(alignment: .leading, spacing: 10) {

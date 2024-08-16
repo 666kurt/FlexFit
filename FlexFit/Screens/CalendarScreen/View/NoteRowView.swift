@@ -7,51 +7,55 @@ struct NoteRowView: View {
     let note: Note
     
     var body: some View {
-        VStack(spacing: 15) {
-            HStack {
-                Text(note.title)
-                    .foregroundColor(Color.theme.text.main)
-                    .lineLimit(1)
-                
-                Spacer()
-                
-                HStack(spacing: 15) {
-                    Text(timeFormatter(from: note.date ?? Date()))
-                        .foregroundColor(Color.theme.text.notActive)
-                    
-                    Rectangle()
-                        .frame(width: 0.5, height: 25)
-                        .foregroundColor(Color(hex: "#38383A"))
-                    
-                    Button {
-                        toggleNotification()
-                    } label: {
-                        Image(systemName: note.enableNotification
-                              ? "bell.fill"
-                              : "bell")
-                        .font(.title3)
-                        .foregroundColor(note.enableNotification
-                                         ? Color.theme.other.primary
-                                         : Color.theme.text.main)
-                    }
-                }
+        VStack(spacing: 5) {
+            
+            Button {
+                toggleNotification()
+            } label: {
+                Image(systemName: note.enableNotification
+                      ? "bell.fill"
+                      : "bell")
+                .font(.title3)
+                .foregroundColor(note.enableNotification
+                                 ? Color.theme.text.main
+                                 : Color.theme.text.main)
             }
-            .padding(.horizontal, 16)
-            .padding(.top, 15)
+            .frame(maxWidth: .infinity, alignment: .trailing)
             
-            Divider()
-                .frame(height: 3)
-                .background(Color.theme.other.primary)
+            Text(timeFormatter(from: note.date ?? Date()))
+                .font(.title2.weight(.bold))
+                .foregroundColor(Color.theme.text.main)
             
+            Text(dateFormatter(from: note.date ?? Date()))
+                .font(.title3.weight(.semibold))
+                .foregroundColor(Color.theme.text.main)
+            
+            Text(note.title)
+                .font(.callout)
+                .foregroundColor(Color.theme.text.main)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .lineLimit(1)
+                .padding(.top, 20)
         }
-        .padding(.top, 5)
+        .padding(.vertical, 15)
+        .padding(.horizontal, 11)
         .frame(maxWidth: .infinity)
         
+        // Тут нужно назначать цвет из объекта note
+        .background(Color(red: note.r, green: note.g, blue: note.b))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
     
-    private func timeFormatter(from date: Date) -> String{
+    
+    private func timeFormatter(from date: Date) -> String {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
+        return formatter.string(from: date)
+    }
+    
+    private func dateFormatter(from date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
         return formatter.string(from: date)
     }
     
@@ -96,6 +100,17 @@ struct NoteRowView: View {
 }
 
 #Preview {
-    CalendarScreen()
+    
+    let context = PersistenceController.preview.container.viewContext
+    let sampleNote = Note(context: context)
+    sampleNote.title = "Drink some water"
+    sampleNote.date = Date()
+    sampleNote.enableNotification = false
+    
+    
+    return NoteRowView(note: sampleNote)
         .environmentObject(CalendarViewModel())
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.theme.background.main)
 }

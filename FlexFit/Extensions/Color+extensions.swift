@@ -16,6 +16,22 @@ extension Color {
         self.init(red: redValue, green: greenValue, blue: blueValue)
     }
     
+    
+    var components: (r: Double, g: Double, b: Double, a: Double) {
+            
+            typealias NativeColor = UIColor
+            
+            var r: CGFloat = 0
+            var g: CGFloat = 0
+            var b: CGFloat = 0
+            var a: CGFloat = 0
+            
+            guard NativeColor(self).getRed(&r, green: &g, blue: &b, alpha: &a) else { return (0,0,0,0) }
+            
+            return (Double(r), Double(g), Double(b), Double(a))
+        }
+    
+    
     static let theme = ColorTheme()
 }
 

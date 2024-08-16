@@ -2,6 +2,8 @@ import SwiftUI
 
 struct WeekCalendarView: View {
     @Binding var selectedDate: Date
+
+    @State private var isVisible = false
     
     var body: some View {
         HStack {
@@ -19,17 +21,23 @@ struct WeekCalendarView: View {
                         .padding(10)
                         .background(calendar.isDate(self.selectedDate, inSameDayAs: date) ? Color.blue : Color.clear)
                         .clipShape(Circle())
+                        .scaleEffect(isVisible ? (calendar.isDate(self.selectedDate, inSameDayAs: date) ? 1.0 : 1.0) : 0.0)
+                        .opacity(isVisible ? 1.0 : 0.0)
+                        .animation(.easeOut(duration: 0.7), value: isVisible)
                 }
                 .frame(maxWidth: .infinity)
                 .onTapGesture {
-                    self.selectedDate = date
+                    withAnimation {
+                        self.selectedDate = date
+                    }
                 }
             }
         }
-        .padding(.horizontal, 10)
         .padding(.top, 10)
         .onAppear {
-            self.selectedDate = Date()
+            withAnimation {
+                isVisible = true
+            }
         }
     }
     

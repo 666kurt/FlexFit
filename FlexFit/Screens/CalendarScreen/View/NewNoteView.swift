@@ -3,13 +3,36 @@ import SwiftUI
 struct NewNoteView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var viewModel: CalendarViewModel
+    
     @State private var noteLabel: String = ""
+    
+    // Новое поле для хранения цвета
+    @State private var noteColor: Color = .red
     
     var body: some View {
         NavigationView {
             VStack(spacing: 15) {
                 dateAndTimeView
                 TextFieldView(placeholder: "Enter note", queryText: $noteLabel)
+                
+                
+                // Выбор цвета для заметки
+                ZStack(alignment: .leading) {
+                        Text("Choose color of note")
+                            .font(.callout)
+                            .foregroundColor(Color.theme.text.notActive)
+                    ColorPicker("", selection: $noteColor)
+                        .colorScheme(.dark)
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12.5)
+                .foregroundColor(Color.theme.text.main)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.theme.other.primary, lineWidth: 2)
+                )
+                .background(Color.theme.background.main)
+            
             }
             .padding(20)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -41,8 +64,16 @@ struct NewNoteView: View {
         return noteLabel.isEmpty ? Color.theme.text.notActive : Color.theme.other.primary
     }
     
+    // Тут нужно добавить сохранения цвета
     private func saveNote() {
-        viewModel.addNote(title: noteLabel, date: viewModel.selectedDate)
+        
+        let red = Double(noteColor.components.r)
+        let green = Double(noteColor.components.g)
+        let blue = Double(noteColor.components.b)
+        let alpha = Double(noteColor.components.a)
+        
+        
+        viewModel.addNote(title: noteLabel, date: viewModel.selectedDate, a: alpha, r: red, g: green, b: blue)
         presentationMode.wrappedValue.dismiss()
     }
 }

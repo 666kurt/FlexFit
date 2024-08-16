@@ -6,6 +6,11 @@ struct CalendarScreen: View {
     @State private var showAlert: Bool = false
     @State private var indexSetToDelete: IndexSet?
     
+    private let colunms: [GridItem] = [
+        GridItem(),
+        GridItem()
+    ]
+    
     var body: some View {
         ZStack {
             VStack(spacing: 20) {
@@ -23,6 +28,7 @@ struct CalendarScreen: View {
                     listNotesView
                 }
             }
+            .padding(.horizontal, 20)
             .background(Color.theme.background.main.ignoresSafeArea())
             .fullScreenCover(isPresented: $showNewNote) {
                 NewNoteView()
@@ -53,19 +59,16 @@ struct CalendarScreen: View {
 extension CalendarScreen {
     private var listNotesView: some View {
         ZStack(alignment: .bottom) {
-            List {
-                ForEach(viewModel.notesForSelectedDate, id: \.id) { note in
-                    NoteRowView(note: note)
-                        .environmentObject(viewModel)
+            ScrollView(showsIndicators: false) {
+                LazyVGrid(columns: colunms) {
+                    ForEach(viewModel.notesForSelectedDate, id: \.id) { note in
+                        NoteRowView(note: note)
+                            .environmentObject(viewModel)
+                    }
                 }
-                .onDelete { indexSet in
-                    showAlert = true
-                    indexSetToDelete = indexSet
-                }
-                .listRowBackground(Color.theme.background.main)
-                .listRowInsets(EdgeInsets())
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                
             }
-            .listStyle(.plain)
             
             NewButtonView(buttonLabel: "New note",
                           isPresented: $showNewNote)
